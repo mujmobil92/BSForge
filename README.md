@@ -1,16 +1,16 @@
 # BSForge 🔨
 
-> Bootstrap Extension Library — komponenty které Bootstrap nemá, stejnou filozofií.
+> Bootstrap extension library — missing components, same philosophy, zero config.
 
 [![jsDelivr](https://img.shields.io/badge/CDN-jsDelivr-orange)](https://www.jsdelivr.com/)
 [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.x-7952b3)](https://getbootstrap.com/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-## Instalace
+## Installation
 
-### CDN (čistý HTML)
+### CDN (plain HTML)
 ```html
-<script src="https://cdn.jsdelivr.net/gh/YOUR_USERNAME/BSForge@latest/dist/loader.js" defer></script>
+<script src="https://cdn.jsdelivr.net/gh/mujmobil92/BSForge@latest/dist/loader.js" defer></script>
 ```
 
 ### npm / Vite
@@ -21,38 +21,40 @@ npm install bsforge
 import 'bsforge';
 ```
 
-## Použití
+## Usage
 
-Stačí přidat `data-bsforge` atribut — loader automaticky načte co potřebuje:
+Add a `data-bsforge` attribute — the loader automatically fetches only what the page needs:
 
 ```html
 <!-- OTP Input -->
 <div data-bsforge="otp" data-length="6"></div>
 
-<!-- S vlastním nastavením -->
-<div data-bsforge="otp" data-length="4" data-type="numeric"></div>
+<!-- With options -->
+<div data-bsforge="otp" data-length="4" data-variant="filled" data-mask="true"></div>
 ```
 
-## Komponenty
+No configuration, no imports, no build step required.
 
-| Komponenta | Stav | Atributy |
+## Components
+
+| Component | Status | Key attributes |
 |---|---|---|
-| OTP Input | ✅ v0.1.0 | `data-length`, `data-type`, `data-name` |
-| Skeleton | 🔜 brzy | — |
-| Dropzone | 🔜 brzy | — |
-| Datepicker | 🔜 brzy | — |
+| OTP Input | ✅ v0.5.0 | `data-length`, `data-variant`, `data-mask`, `data-timeout`, `data-secure-clear` |
+| Skeleton  | 🔜 soon | — |
+| Dropzone  | 🔜 soon | — |
+| Datepicker | 🔜 soon | — |
 
-## Filosofie
+## Philosophy
 
-- **Bootstrap-native** — používá `var(--bs-*)` proměnné, funguje s jakýmkoli tématem
-- **Zero config** — žádná inicializace, jen HTML atributy
-- **Modulární** — načítá se jen to co stránka potřebuje
-- **Bez závislostí** — žádný jQuery, žádný npm nutný
+- **Bootstrap-native** — uses `var(--bs-*)` CSS variables, works with any theme or dark mode automatically
+- **Zero config** — no initialization, just HTML attributes
+- **Modular** — only loads what the page actually uses
+- **No dependencies** — no jQuery, no npm required
 
-## Dokumentace
+## Documentation
 
-👉 [BSForge Docs](https://YOUR_USERNAME.github.io/BSForge)
+👉 [BSForge Docs](https://mujmobil92.github.io/BSForge)
 
-## Licence
+## License
 
 MIT
