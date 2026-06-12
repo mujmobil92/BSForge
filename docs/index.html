@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BSForge — Bootstrap Extension Library</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
     <style>
-        /* ── OTP CSS ── */
+        /* ── OTP ── */
         .bsforge-otp { display: inline-flex; align-items: center; }
         .bsforge-otp--gap-sm { gap: .35rem; }
         .bsforge-otp--gap-md { gap: .5rem;  }
@@ -17,98 +18,65 @@
         .bsforge-otp--lg .bsforge-otp__input { width: 3.75rem; height: 4.25rem; font-size: 2rem;   }
         .bsforge-otp__input {
             padding: 0; text-align: center; font-weight: 600;
-            color: var(--bs-body-color);
-            background-color: var(--bs-body-bg);
-            border: 1px solid var(--bs-border-color);
-            border-radius: var(--bs-border-radius);
+            color: var(--bs-body-color); background-color: var(--bs-body-bg);
+            border: 1px solid var(--bs-border-color); border-radius: var(--bs-border-radius);
             transition: border-color .15s, box-shadow .15s, background .15s;
         }
-        /* outlined */
-        .bsforge-otp--outlined .bsforge-otp__input:focus {
-            border-color: var(--bs-primary);
-            box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb),.25); outline: 0;
-        }
-        .bsforge-otp--outlined .bsforge-otp__input:not(:placeholder-shown) {
-            border-color: var(--bs-primary);
-            background-color: rgba(var(--bs-primary-rgb),.05);
-        }
-        /* filled */
-        .bsforge-otp--filled .bsforge-otp__input {
-            border-color: transparent;
-            background-color: var(--bs-secondary-bg);
-        }
-        .bsforge-otp--filled .bsforge-otp__input:focus {
-            border-color: var(--bs-primary);
-            background-color: rgba(var(--bs-primary-rgb),.08);
-            box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb),.2); outline: 0;
-        }
-        .bsforge-otp--filled .bsforge-otp__input:not(:placeholder-shown) {
-            background-color: rgba(var(--bs-primary-rgb),.1);
-            border-color: var(--bs-primary);
-        }
-        /* underline */
-        .bsforge-otp--underline .bsforge-otp__input {
-            border: none; border-bottom: 2px solid var(--bs-border-color);
-            border-radius: 0; background-color: transparent;
-        }
-        .bsforge-otp--underline .bsforge-otp__input:focus {
-            border-bottom-color: var(--bs-primary); box-shadow: none; outline: 0;
-        }
-        .bsforge-otp--underline .bsforge-otp__input:not(:placeholder-shown) {
-            border-bottom-color: var(--bs-primary);
-        }
-        /* states */
-        .bsforge-otp--error .bsforge-otp__input.is-invalid {
-            border-color: var(--bs-danger) !important;
-            background-color: rgba(var(--bs-danger-rgb),.05);
-            animation: bsforge-shake .4s ease;
-        }
-        .bsforge-otp--error .bsforge-otp__input.is-invalid:focus {
-            box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb),.25);
-        }
-        .bsforge-otp--success .bsforge-otp__input.is-valid {
-            border-color: var(--bs-success) !important;
-            background-color: rgba(var(--bs-success-rgb),.05);
-        }
-        .bsforge-otp--success .bsforge-otp__input.is-valid:focus {
-            box-shadow: 0 0 0 .25rem rgba(var(--bs-success-rgb),.25);
-        }
-        .bsforge-otp--disabled .bsforge-otp__input {
-            opacity: .55; cursor: not-allowed;
-            background-color: var(--bs-secondary-bg);
-        }
-        .bsforge-otp__separator {
-            font-size: 1.25rem; font-weight: 300;
-            user-select: none; padding: 0 .1rem;
-            color: var(--bs-secondary-color);
-        }
-        @keyframes bsforge-pulse {
-            0%   { transform: scale(1);    }
-            50%  { transform: scale(1.06); }
-            100% { transform: scale(1);    }
-        }
+        .bsforge-otp--outlined .bsforge-otp__input:focus { border-color: var(--bs-primary); box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb),.25); outline: 0; }
+        .bsforge-otp--outlined .bsforge-otp__input:not(:placeholder-shown) { border-color: var(--bs-primary); background-color: rgba(var(--bs-primary-rgb),.05); }
+        .bsforge-otp--filled .bsforge-otp__input { border-color: transparent; background-color: var(--bs-secondary-bg); }
+        .bsforge-otp--filled .bsforge-otp__input:focus { border-color: var(--bs-primary); background-color: rgba(var(--bs-primary-rgb),.08); box-shadow: 0 0 0 .25rem rgba(var(--bs-primary-rgb),.2); outline: 0; }
+        .bsforge-otp--filled .bsforge-otp__input:not(:placeholder-shown) { background-color: rgba(var(--bs-primary-rgb),.1); border-color: var(--bs-primary); }
+        .bsforge-otp--underline .bsforge-otp__input { border: none; border-bottom: 2px solid var(--bs-border-color); border-radius: 0; background-color: transparent; }
+        .bsforge-otp--underline .bsforge-otp__input:focus { border-bottom-color: var(--bs-primary); box-shadow: none; outline: 0; }
+        .bsforge-otp--underline .bsforge-otp__input:not(:placeholder-shown) { border-bottom-color: var(--bs-primary); }
+        .bsforge-otp--error .bsforge-otp__input.is-invalid { border-color: var(--bs-danger) !important; background-color: rgba(var(--bs-danger-rgb),.05); animation: bsforge-shake .4s ease; }
+        .bsforge-otp--error .bsforge-otp__input.is-invalid:focus { box-shadow: 0 0 0 .25rem rgba(var(--bs-danger-rgb),.25); }
+        .bsforge-otp--success .bsforge-otp__input.is-valid { border-color: var(--bs-success) !important; background-color: rgba(var(--bs-success-rgb),.05); }
+        .bsforge-otp--success .bsforge-otp__input.is-valid:focus { box-shadow: 0 0 0 .25rem rgba(var(--bs-success-rgb),.25); }
+        .bsforge-otp--disabled .bsforge-otp__input { opacity: .55; cursor: not-allowed; background-color: var(--bs-secondary-bg); }
+        .bsforge-otp__separator { font-size: 1.25rem; font-weight: 300; user-select: none; padding: 0 .1rem; color: var(--bs-secondary-color); }
+        @keyframes bsforge-pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
         .bsforge-otp--pulse .bsforge-otp__input { animation: bsforge-pulse .35s ease; }
-        @keyframes bsforge-shake {
-            0%,100% { transform: translateX(0);    }
-            20%     { transform: translateX(-4px); }
-            40%     { transform: translateX(4px);  }
-            60%     { transform: translateX(-4px); }
-            80%     { transform: translateX(2px);  }
-        }
+        @keyframes bsforge-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-4px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-4px); } 80% { transform: translateX(2px); } }
 
-        /* ── Docs styles ── */
-        .hero {
-            background: linear-gradient(135deg, var(--bs-primary) 0%, #6610f2 100%);
-            color: white; padding: 5rem 0 4rem;
+        /* ── Dropzone ── */
+        .bsforge-dropzone { width: 100%; }
+        .bsforge-dropzone__zone {
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 2.5rem 1.5rem; border: 2px dashed var(--bs-border-color);
+            border-radius: var(--bs-border-radius-lg); background: var(--bs-body-bg);
+            cursor: pointer; transition: border-color .15s, background .15s, transform .1s;
+            text-align: center; user-select: none;
         }
+        .bsforge-dropzone__zone:hover, .bsforge-dropzone__zone:focus { border-color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.04); outline: none; }
+        .bsforge-dropzone__zone--over { border-color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.08); transform: scale(1.01); }
+        .bsforge-dropzone__zone--error { border-color: var(--bs-danger); background: rgba(var(--bs-danger-rgb),.06); animation: bsforge-dz-shake .4s ease; }
+        .bsforge-dropzone__icon { font-size: 2.5rem; color: var(--bs-primary); margin-bottom: .75rem; transition: transform .2s; }
+        .bsforge-dropzone__zone--over .bsforge-dropzone__icon { transform: translateY(-4px); }
+        .bsforge-dropzone__label { font-weight: 600; color: var(--bs-body-color); margin: 0; }
+        .bsforge-dropzone__list { margin-top: .75rem; display: flex; flex-direction: column; gap: .5rem; }
+        .bsforge-dropzone__item { padding: .6rem .75rem; background: var(--bs-tertiary-bg); border: 1px solid var(--bs-border-color); border-radius: var(--bs-border-radius); animation: bsforge-dz-in .2s ease; display: flex; align-items: center; gap: .5rem; }
+        .bsforge-dropzone__thumb { width: 40px; height: 40px; object-fit: cover; border-radius: var(--bs-border-radius-sm); flex-shrink: 0; border: 1px solid var(--bs-border-color); }
+        .bsforge-dropzone__file-icon { font-size: 1.75rem; color: var(--bs-primary); flex-shrink: 0; width: 40px; text-align: center; }
+        .bsforge-dropzone__filename { color: var(--bs-body-color); }
+        .bsforge-dropzone__remove { flex-shrink: 0; opacity: .5; transition: opacity .15s; text-decoration: none; }
+        .bsforge-dropzone__remove:hover { opacity: 1; }
+        .bsforge-dropzone--disabled .bsforge-dropzone__zone { opacity: .55; cursor: not-allowed; pointer-events: none; }
+        .bsforge-dropzone--has-files .bsforge-dropzone__zone { padding: 1.25rem 1.5rem; }
+        .bsforge-dropzone--has-files .bsforge-dropzone__icon { font-size: 1.75rem; }
+        @keyframes bsforge-dz-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bsforge-dz-shake { 0%,100% { transform: translateX(0); } 20% { transform: translateX(-5px); } 40% { transform: translateX(5px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(3px); } }
+
+        /* ── Docs ── */
+        .hero { background: linear-gradient(135deg, var(--bs-primary) 0%, #6610f2 100%); color: white; padding: 5rem 0 4rem; }
         .hero .badge-version { background: rgba(255,255,255,.2); color: white; }
         pre.code-block {
             background: #1e1e2e; color: #cdd6f4;
             border-radius: var(--bs-border-radius-lg);
             padding: 1.25rem 1.5rem;
             font-family: 'Cascadia Code', 'Fira Code', 'Courier New', monospace;
-            font-size: .85rem; line-height: 1.75;
-            overflow-x: auto; margin: 0; white-space: pre;
+            font-size: .85rem; line-height: 1.75; overflow-x: auto; margin: 0; white-space: pre;
         }
         pre.code-block .tag     { color: #f38ba8; }
         pre.code-block .attr    { color: #fab387; }
@@ -117,66 +85,33 @@
         pre.code-block .fn      { color: #89b4fa; }
         pre.code-block .kw      { color: #cba6f7; }
         pre.code-block .str     { color: #a6e3a1; }
-        .demo-area {
-            background: var(--bs-tertiary-bg);
-            border: 1px solid var(--bs-border-color);
-            border-radius: var(--bs-border-radius-xl, 1rem);
-            padding: 2.5rem 2rem;
-        }
-        .demo-block {
-            display: flex; flex-direction: column;
-            align-items: center; gap: .75rem;
-            padding: 1.75rem 1rem;
-        }
+        .demo-area { background: var(--bs-tertiary-bg); border: 1px solid var(--bs-border-color); border-radius: var(--bs-border-radius-xl, 1rem); padding: 2.5rem 2rem; }
+        .demo-block { display: flex; flex-direction: column; align-items: center; gap: .75rem; padding: 1.75rem 1rem; }
         .demo-block + .demo-block { border-top: 1px solid var(--bs-border-color); }
-        .demo-label {
-            font-size: .75rem; font-weight: 600; letter-spacing: .08em;
-            text-transform: uppercase; color: var(--bs-secondary-color);
-        }
-        .docs-nav .nav-link {
-            color: var(--bs-secondary-color); padding: .35rem .75rem;
-            border-radius: var(--bs-border-radius); font-size: .875rem;
-        }
-        .docs-nav .nav-link:hover,
-        .docs-nav .nav-link.active { color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.08); }
-        .attr-table th {
-            font-size: .75rem; text-transform: uppercase;
-            letter-spacing: .06em; color: var(--bs-secondary-color);
-        }
-        code {
-            color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.1);
-            padding: .15em .4em; border-radius: 4px; font-size: .85em;
-        }
+        .demo-label { font-size: .75rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--bs-secondary-color); }
+        .docs-nav .nav-link { color: var(--bs-secondary-color); padding: .35rem .75rem; border-radius: var(--bs-border-radius); font-size: .875rem; }
+        .docs-nav .nav-link:hover, .docs-nav .nav-link.active { color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.08); }
+        .attr-table th { font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--bs-secondary-color); }
+        code { color: var(--bs-primary); background: rgba(var(--bs-primary-rgb),.1); padding: .15em .4em; border-radius: 4px; font-size: .85em; }
         .section-title { font-size: 1.6rem; font-weight: 700; margin-bottom: .25rem; }
-        .event-log {
-            font-family: monospace; font-size: .8rem;
-            min-height: 1.6rem; color: var(--bs-secondary-color);
-        }
-        .countdown-bar {
-            height: 3px; border-radius: 2px;
-            background: var(--bs-primary); width: 100%;
-            transition: width linear;
-        }
+        .event-log { font-family: monospace; font-size: .8rem; min-height: 1.6rem; color: var(--bs-secondary-color); }
+        .countdown-bar { height: 3px; border-radius: 2px; background: var(--bs-primary); width: 100%; transition: width linear; }
     </style>
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar navbar-expand-lg border-bottom sticky-top bg-body">
     <div class="container">
         <a class="navbar-brand fw-bold" href="#"><span class="text-primary">BS</span>Forge</a>
         <div class="d-flex gap-3 align-items-center ms-auto">
-            <a href="#install" class="nav-link d-none d-md-block">Install</a>
-            <a href="#otp"     class="nav-link d-none d-md-block">Components</a>
-            <a href="https://github.com/YOUR_USERNAME/BSForge"
-               class="btn btn-sm btn-outline-secondary" target="_blank">GitHub</a>
-            <button class="btn btn-sm btn-outline-secondary"
-                    onclick="toggleTheme()" id="themeBtn">🌙</button>
+            <a href="#install"  class="nav-link d-none d-md-block">Install</a>
+            <a href="#otp"      class="nav-link d-none d-md-block">Components</a>
+            <a href="https://github.com/mujmobil92/BSForge" class="btn btn-sm btn-outline-secondary" target="_blank">GitHub</a>
+            <button class="btn btn-sm btn-outline-secondary" onclick="toggleTheme()" id="themeBtn">🌙</button>
         </div>
     </div>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
     <div class="container text-center">
         <span class="badge badge-version mb-3 fs-6">Bootstrap Extension Library</span>
@@ -187,17 +122,14 @@
         </p>
         <div class="d-flex gap-3 justify-content-center flex-wrap">
             <a href="#install" class="btn btn-light btn-lg">Get started →</a>
-            <a href="https://github.com/YOUR_USERNAME/BSForge"
-               class="btn btn-outline-light btn-lg" target="_blank">GitHub</a>
+            <a href="https://github.com/mujmobil92/BSForge" class="btn btn-outline-light btn-lg" target="_blank">GitHub</a>
         </div>
     </div>
 </section>
 
-<!-- Main -->
 <div class="container py-5">
     <div class="row g-5">
 
-        <!-- Sidebar -->
         <div class="col-lg-2 d-none d-lg-block">
             <nav class="docs-nav sticky-top pt-2" style="top:80px">
                 <div class="fw-semibold text-uppercase small text-secondary mb-2 px-2">Getting started</div>
@@ -207,24 +139,21 @@
                 </ul>
                 <div class="fw-semibold text-uppercase small text-secondary mb-2 px-2">Components</div>
                 <ul class="nav flex-column">
-                    <li><a href="#otp" class="nav-link">OTP Input</a></li>
-                    <li><a href="#" class="nav-link text-muted">Skeleton  <span class="badge bg-secondary ms-1">soon</span></a></li>
-                    <li><a href="#" class="nav-link text-muted">Dropzone  <span class="badge bg-secondary ms-1">soon</span></a></li>
+                    <li><a href="#otp"      class="nav-link">OTP Input</a></li>
+                    <li><a href="#dropzone" class="nav-link">Dropzone</a></li>
+                    <li><a href="#" class="nav-link text-muted">Skeleton <span class="badge bg-secondary ms-1">soon</span></a></li>
                 </ul>
             </nav>
         </div>
 
-        <!-- Content -->
         <div class="col-lg-10">
 
             <!-- Installation -->
             <section id="install" class="mb-5">
                 <h2 class="section-title">Installation</h2>
                 <p class="text-secondary mb-4">Add one line after Bootstrap. That's it.</p>
-
                 <h6 class="fw-semibold mb-2">CDN</h6>
-                <pre class="code-block mb-4"><span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://cdn.jsdelivr.net/gh/YOUR_USERNAME/BSForge@latest/dist/loader.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span></pre>
-
+                <pre class="code-block mb-4"><span class="tag">&lt;script</span> <span class="attr">src</span>=<span class="str">"https://cdn.jsdelivr.net/gh/mujmobil92/BSForge@latest/dist/loader.js"</span> <span class="attr">defer</span><span class="tag">&gt;&lt;/script&gt;</span></pre>
                 <h6 class="fw-semibold mb-2">npm / Vite</h6>
                 <pre class="code-block">npm install bsforge</pre>
             </section>
@@ -274,133 +203,79 @@
                     <h2 class="section-title mb-0">OTP Input</h2>
                     <span class="badge bg-success fs-6">v0.5.0</span>
                 </div>
-                <p class="text-secondary mb-4">
-                    Multi-field input for one-time codes, PINs and verification.
-                    Supports variants, mask, timeout, secure-clear, pattern, placeholder, DOM events and more.
-                </p>
+                <p class="text-secondary mb-4">Multi-field input for one-time codes, PINs and verification. Supports variants, mask, timeout, secure-clear, pattern, placeholder, DOM events and more.</p>
 
-                <!-- ── DEMO ── -->
                 <h6 class="fw-semibold mb-3">Demo</h6>
                 <div class="demo-area mb-5">
-
-                    <!-- Basic -->
                     <div class="demo-block">
                         <div class="demo-label">Basic — 6 digits</div>
                         <div data-bsforge="otp" data-length="6"></div>
                     </div>
-
-                    <!-- Sizes -->
                     <div class="demo-block">
                         <div class="demo-label">Sizes</div>
                         <div class="d-flex flex-column align-items-center gap-3 w-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:2rem">sm</span>
-                                <div data-bsforge="otp" data-length="4" data-size="sm"></div>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:2rem">md</span>
-                                <div data-bsforge="otp" data-length="4" data-size="md"></div>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:2rem">lg</span>
-                                <div data-bsforge="otp" data-length="4" data-size="lg"></div>
-                            </div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:2rem">sm</span><div data-bsforge="otp" data-length="4" data-size="sm"></div></div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:2rem">md</span><div data-bsforge="otp" data-length="4" data-size="md"></div></div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:2rem">lg</span><div data-bsforge="otp" data-length="4" data-size="lg"></div></div>
                         </div>
                     </div>
-
-                    <!-- Variants -->
                     <div class="demo-block">
                         <div class="demo-label">Variants</div>
                         <div class="d-flex flex-column align-items-center gap-3 w-100">
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:5.5rem">outlined</span>
-                                <div data-bsforge="otp" data-length="4" data-variant="outlined"></div>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:5.5rem">filled</span>
-                                <div data-bsforge="otp" data-length="4" data-variant="filled"></div>
-                            </div>
-                            <div class="d-flex align-items-center gap-3">
-                                <span class="badge bg-secondary" style="width:5.5rem">underline</span>
-                                <div data-bsforge="otp" data-length="4" data-variant="underline"></div>
-                            </div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:5.5rem">outlined</span><div data-bsforge="otp" data-length="4" data-variant="outlined"></div></div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:5.5rem">filled</span><div data-bsforge="otp" data-length="4" data-variant="filled"></div></div>
+                            <div class="d-flex align-items-center gap-3"><span class="badge bg-secondary" style="width:5.5rem">underline</span><div data-bsforge="otp" data-length="4" data-variant="underline"></div></div>
                         </div>
                     </div>
-
-                    <!-- Separator -->
                     <div class="demo-block">
                         <div class="demo-label">Separator after 3  <code class="ms-1">data-separator="3"</code></div>
                         <div data-bsforge="otp" data-length="6" data-separator="3"></div>
                     </div>
-
-                    <!-- Custom separator char -->
                     <div class="demo-block">
                         <div class="demo-label">Custom separator char  <code class="ms-1">data-separator-char="·"</code></div>
                         <div data-bsforge="otp" data-length="6" data-separator="3" data-separator-char="·"></div>
                     </div>
-
-                    <!-- Placeholder -->
                     <div class="demo-block">
                         <div class="demo-label">Placeholder  <code class="ms-1">data-placeholder="·"</code></div>
                         <div data-bsforge="otp" data-length="6" data-placeholder="·"></div>
                     </div>
-
-                    <!-- Masked -->
                     <div class="demo-block">
                         <div class="demo-label">Masked  <code class="ms-1">data-mask="true"</code></div>
                         <div data-bsforge="otp" data-length="4" data-mask="true"></div>
                     </div>
-
-                    <!-- Alphanumeric -->
                     <div class="demo-block">
                         <div class="demo-label">Alphanumeric — 5 chars  <code class="ms-1">data-type="alphanumeric"</code></div>
                         <div data-bsforge="otp" data-length="5" data-type="alphanumeric"></div>
                     </div>
-
-                    <!-- Custom pattern -->
                     <div class="demo-block">
                         <div class="demo-label">Custom pattern — odd digits only  <code class="ms-1">data-pattern="^[13579]$"</code></div>
                         <div data-bsforge="otp" data-length="4" data-pattern="^[13579]$"></div>
                     </div>
-
-                    <!-- Readonly -->
                     <div class="demo-block">
                         <div class="demo-label">Readonly  <code class="ms-1">data-readonly="true"</code></div>
                         <div data-bsforge="otp" data-length="6" data-readonly="true" id="demoReadonly"></div>
                     </div>
-
-                    <!-- Timeout + event log -->
                     <div class="demo-block">
                         <div class="demo-label">Auto-clear after 5 s  <code class="ms-1">data-timeout="5"</code></div>
                         <div data-bsforge="otp" data-length="4" data-timeout="5" id="demoTimeout"></div>
-                        <div id="countdownWrap" class="w-100" style="max-width:200px; display:none">
-                            <div class="countdown-bar" id="countdownBar"></div>
-                        </div>
+                        <div id="countdownWrap" class="w-100" style="max-width:200px;display:none"><div class="countdown-bar" id="countdownBar"></div></div>
                         <div class="event-log" id="timeoutLog">Fill all inputs to start the timer.</div>
                     </div>
-
-                    <!-- Secure clear -->
                     <div class="demo-block">
                         <div class="demo-label">Secure-clear after 8 s  <code class="ms-1">data-secure-clear="8"</code></div>
                         <div data-bsforge="otp" data-length="4" data-secure-clear="8" id="demoSecure"></div>
                         <div class="event-log text-warning" id="secureLog">Clears and disables in 8 s — call enable() to unlock.</div>
                     </div>
-
-                    <!-- onchange callback -->
                     <div class="demo-block">
                         <div class="demo-label">onchange callback  <code class="ms-1">data-onchange="handleChange"</code></div>
                         <div data-bsforge="otp" data-length="4" data-onchange="handleChange" id="demoOnchange"></div>
                         <div class="event-log" id="onchangeLog">Start typing…</div>
                     </div>
-
-                    <!-- DOM events -->
                     <div class="demo-block">
                         <div class="demo-label">DOM Events  <code class="ms-1">bsforge:change · bsforge:complete · bsforge:reset</code></div>
                         <div data-bsforge="otp" data-length="4" id="demoEvents"></div>
                         <div class="event-log" id="eventLog">Waiting for events…</div>
                     </div>
-
-                    <!-- API -->
                     <div class="demo-block">
                         <div class="demo-label">JavaScript API</div>
                         <div data-bsforge="otp" data-length="4" id="demoApi"></div>
@@ -414,10 +289,8 @@
                         </div>
                         <div class="event-log" id="apiResult">Click a button above.</div>
                     </div>
-
                 </div>
 
-                <!-- ── USAGE ── -->
                 <h6 class="fw-semibold mb-2">Usage</h6>
                 <pre class="code-block mb-4"><span class="comment">&lt;!-- Basic --&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span><span class="tag">&gt;&lt;/div&gt;</span>
@@ -427,43 +300,20 @@
      <span class="attr">data-variant</span>=<span class="str">"filled"</span>
      <span class="attr">data-placeholder</span>=<span class="str">"·"</span><span class="tag">&gt;&lt;/div&gt;</span>
 
-<span class="comment">&lt;!-- Separator + custom char --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
-     <span class="attr">data-separator</span>=<span class="str">"3"</span>
-     <span class="attr">data-separator-char</span>=<span class="str">"·"</span><span class="tag">&gt;&lt;/div&gt;</span>
-
 <span class="comment">&lt;!-- Masked + auto-clear after 10 s --&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
      <span class="attr">data-mask</span>=<span class="str">"true"</span>
      <span class="attr">data-timeout</span>=<span class="str">"10"</span><span class="tag">&gt;&lt;/div&gt;</span>
 
-<span class="comment">&lt;!-- Custom pattern — only odd digits --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
-     <span class="attr">data-pattern</span>=<span class="str">"^[13579]$"</span><span class="tag">&gt;&lt;/div&gt;</span>
-
-<span class="comment">&lt;!-- Secure-clear — resets N seconds after page load --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
-     <span class="attr">data-secure-clear</span>=<span class="str">"30"</span><span class="tag">&gt;&lt;/div&gt;</span>
-
-<span class="comment">&lt;!-- onchange callback — every keystroke --&gt;</span>
+<span class="comment">&lt;!-- onchange callback --&gt;</span>
 <span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
      <span class="attr">data-onchange</span>=<span class="str">"handleChange"</span><span class="tag">&gt;&lt;/div&gt;</span>
 <span class="tag">&lt;script&gt;</span>
   <span class="kw">function</span> <span class="fn">handleChange</span>(value, complete) {
     console.<span class="fn">log</span>(value, complete);
   }
-<span class="tag">&lt;/script&gt;</span>
-
-<span class="comment">&lt;!-- Callback on complete --&gt;</span>
-<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"otp"</span>
-     <span class="attr">data-oncomplete</span>=<span class="str">"verify"</span><span class="tag">&gt;&lt;/div&gt;</span>
-<span class="tag">&lt;script&gt;</span>
-  <span class="kw">function</span> <span class="fn">verify</span>(code) {
-    console.<span class="fn">log</span>(<span class="str">'Code:'</span>, code);
-  }
 <span class="tag">&lt;/script&gt;</span></pre>
 
-                <!-- ── JS API ── -->
                 <h6 class="fw-semibold mb-2">JavaScript API</h6>
                 <pre class="code-block mb-4"><span class="kw">const</span> otp = document.<span class="fn">querySelector</span>(<span class="str">'.bsforge-otp'</span>)._bsforge;
 
@@ -475,60 +325,141 @@ otp.<span class="fn">setError</span>(<span class="kw">false</span>);   <span cla
 otp.<span class="fn">disable</span>();           <span class="comment">// disable inputs</span>
 otp.<span class="fn">enable</span>();            <span class="comment">// enable inputs</span></pre>
 
-                <!-- ── DOM EVENTS ── -->
-                <h6 class="fw-semibold mb-2">DOM Events</h6>
-                <pre class="code-block mb-4"><span class="kw">const</span> el = document.<span class="fn">getElementById</span>(<span class="str">'myOtp'</span>);
-
-el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:change'</span>, e =&gt; {
-  console.<span class="fn">log</span>(e.detail.value);    <span class="comment">// current value</span>
-  console.<span class="fn">log</span>(e.detail.complete);  <span class="comment">// true when all filled</span>
-});
-
-el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:complete'</span>, e =&gt; {
-  console.<span class="fn">log</span>(e.detail.value);    <span class="comment">// final code</span>
-});
-
-el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</span>, () =&gt; {
-  console.<span class="fn">log</span>(<span class="str">'reset fired'</span>);
-});</pre>
-
-                <!-- ── ATTRIBUTES TABLE ── -->
                 <h6 class="fw-semibold mb-3">Attributes</h6>
                 <div class="table-responsive mb-4">
                     <table class="table table-sm align-middle attr-table">
-                        <thead>
-                            <tr>
-                                <th>Attribute</th>
-                                <th>Values</th>
-                                <th>Default</th>
-                                <th>Description</th>
-                            </tr>
-                        </thead>
+                        <thead><tr><th>Attribute</th><th>Values</th><th>Default</th><th>Description</th></tr></thead>
                         <tbody>
-                            <tr><td><code>data-length</code></td>        <td>number</td>                                      <td><code>6</code></td>         <td>Number of input fields</td></tr>
-                            <tr><td><code>data-type</code></td>           <td><code>numeric</code> / <code>alphanumeric</code></td><td><code>numeric</code></td>  <td>Allowed characters</td></tr>
-                            <tr><td><code>data-variant</code></td>        <td><code>outlined</code> / <code>filled</code> / <code>underline</code></td><td><code>outlined</code></td><td>Visual style</td></tr>
-                            <tr><td><code>data-size</code></td>           <td><code>sm</code> / <code>md</code> / <code>lg</code></td><td><code>md</code></td>   <td>Input size</td></tr>
-                            <tr><td><code>data-gap</code></td>            <td><code>sm</code> / <code>md</code> / <code>lg</code></td><td><code>md</code></td>   <td>Gap between inputs</td></tr>
-                            <tr><td><code>data-placeholder</code></td>    <td>string</td>                                     <td>—</td>                        <td>Placeholder character</td></tr>
-                            <tr><td><code>data-separator</code></td>      <td>number</td>                                     <td>—</td>                        <td>Divider after N inputs</td></tr>
-                            <tr><td><code>data-separator-char</code></td> <td>string</td>                                     <td><code>–</code></td>           <td>Custom separator character</td></tr>
-                            <tr><td><code>data-mask</code></td>           <td><code>true</code></td>                          <td>—</td>                        <td>Show dots instead of digits</td></tr>
-                            <tr><td><code>data-pattern</code></td>        <td>regex string</td>                               <td>—</td>                        <td>Custom validation pattern</td></tr>
-                            <tr><td><code>data-readonly</code></td>       <td><code>true</code></td>                          <td>—</td>                        <td>Display only, no editing</td></tr>
-                            <tr><td><code>data-disabled</code></td>       <td><code>true</code></td>                          <td>—</td>                        <td>Fully disabled</td></tr>
-                            <tr><td><code>data-required</code></td>       <td><code>true</code></td>                          <td>—</td>                        <td>Validates on form submit</td></tr>
-                            <tr><td><code>data-autofocus</code></td>      <td><code>true</code></td>                          <td>—</td>                        <td>Focus first input on load</td></tr>
-                            <tr><td><code>data-timeout</code></td>        <td>seconds</td>                                    <td>—</td>                        <td>Auto-clear after completing</td></tr>
-                            <tr><td><code>data-secure-clear</code></td>   <td>seconds</td>                                    <td>—</td>                        <td>Auto-clear + disable after page load</td></tr>
-                            <tr><td><code>data-oncomplete</code></td>     <td>function name</td>                              <td>—</td>                        <td>Called with code on complete</td></tr>
-                            <tr><td><code>data-onchange</code></td>       <td>function name</td>                              <td>—</td>                        <td>Called on every keystroke (value, complete)</td></tr>
-                            <tr><td><code>data-name</code></td>           <td>string</td>                                     <td><code>otp</code></td>          <td>Hidden input name for forms</td></tr>
+                            <tr><td><code>data-length</code></td>        <td>number</td>                                                              <td><code>6</code></td>        <td>Number of input fields</td></tr>
+                            <tr><td><code>data-type</code></td>           <td><code>numeric</code> / <code>alphanumeric</code></td>                    <td><code>numeric</code></td>  <td>Allowed characters</td></tr>
+                            <tr><td><code>data-variant</code></td>        <td><code>outlined</code> / <code>filled</code> / <code>underline</code></td><td><code>outlined</code></td> <td>Visual style</td></tr>
+                            <tr><td><code>data-size</code></td>           <td><code>sm</code> / <code>md</code> / <code>lg</code></td>                <td><code>md</code></td>       <td>Input size</td></tr>
+                            <tr><td><code>data-gap</code></td>            <td><code>sm</code> / <code>md</code> / <code>lg</code></td>                <td><code>md</code></td>       <td>Gap between inputs</td></tr>
+                            <tr><td><code>data-placeholder</code></td>    <td>string</td>                                                             <td>—</td>                    <td>Placeholder character</td></tr>
+                            <tr><td><code>data-separator</code></td>      <td>number</td>                                                             <td>—</td>                    <td>Divider after N inputs</td></tr>
+                            <tr><td><code>data-separator-char</code></td> <td>string</td>                                                             <td><code>–</code></td>       <td>Custom separator character</td></tr>
+                            <tr><td><code>data-mask</code></td>           <td><code>true</code></td>                                                  <td>—</td>                    <td>Show dots instead of digits</td></tr>
+                            <tr><td><code>data-pattern</code></td>        <td>regex string</td>                                                       <td>—</td>                    <td>Custom validation pattern</td></tr>
+                            <tr><td><code>data-readonly</code></td>       <td><code>true</code></td>                                                  <td>—</td>                    <td>Display only, no editing</td></tr>
+                            <tr><td><code>data-disabled</code></td>       <td><code>true</code></td>                                                  <td>—</td>                    <td>Fully disabled</td></tr>
+                            <tr><td><code>data-required</code></td>       <td><code>true</code></td>                                                  <td>—</td>                    <td>Validates on form submit</td></tr>
+                            <tr><td><code>data-autofocus</code></td>      <td><code>true</code></td>                                                  <td>—</td>                    <td>Focus first input on load</td></tr>
+                            <tr><td><code>data-timeout</code></td>        <td>seconds</td>                                                            <td>—</td>                    <td>Auto-clear after completing</td></tr>
+                            <tr><td><code>data-secure-clear</code></td>   <td>seconds</td>                                                            <td>—</td>                    <td>Auto-clear + disable after page load</td></tr>
+                            <tr><td><code>data-oncomplete</code></td>     <td>function name</td>                                                      <td>—</td>                    <td>Called with code on complete</td></tr>
+                            <tr><td><code>data-onchange</code></td>       <td>function name</td>                                                      <td>—</td>                    <td>Called on every keystroke (value, complete)</td></tr>
+                            <tr><td><code>data-name</code></td>           <td>string</td>                                                             <td><code>otp</code></td>     <td>Hidden input name for forms</td></tr>
                         </tbody>
                     </table>
                 </div>
-
             </section>
+
+            <hr class="my-5">
+
+            <!-- Dropzone -->
+            <section id="dropzone" class="mb-5">
+                <div class="d-flex align-items-center gap-2 mb-1">
+                    <h2 class="section-title mb-0">Dropzone</h2>
+                    <span class="badge bg-success fs-6">v0.1.0</span>
+                </div>
+                <p class="text-secondary mb-4">A beautiful file upload zone. Supports drag & drop, click to browse, Ctrl+V paste, image previews, file type and size validation.</p>
+
+                <h6 class="fw-semibold mb-3">Demo</h6>
+                <div class="demo-area mb-5">
+                    <div class="demo-block">
+                        <div class="demo-label">Basic</div>
+                        <div class="w-100" style="max-width:480px">
+                            <div data-bsforge="dropzone"></div>
+                        </div>
+                    </div>
+                    <div class="demo-block">
+                        <div class="demo-label">Images only · max 2 MB · max 3 files</div>
+                        <div class="w-100" style="max-width:480px">
+                            <div data-bsforge="dropzone"
+                                 data-accept=".jpg,.jpeg,.png,.webp"
+                                 data-max-size="2MB"
+                                 data-multiple="true"
+                                 data-max-files="3"></div>
+                        </div>
+                    </div>
+                    <div class="demo-block">
+                        <div class="demo-label">PDF only · single file · custom label</div>
+                        <div class="w-100" style="max-width:480px">
+                            <div data-bsforge="dropzone"
+                                 data-accept=".pdf"
+                                 data-label="Drop your PDF here or click to browse"></div>
+                        </div>
+                    </div>
+                    <div class="demo-block">
+                        <div class="demo-label">Multiple files · onchange callback</div>
+                        <div class="w-100" style="max-width:480px">
+                            <div data-bsforge="dropzone"
+                                 data-multiple="true"
+                                 data-onchange="dzHandleChange"
+                                 id="demoDropzone"></div>
+                        </div>
+                        <div class="event-log" id="dzLog">No files selected yet.</div>
+                    </div>
+                    <div class="demo-block">
+                        <div class="demo-label">JavaScript API</div>
+                        <div class="w-100" style="max-width:480px">
+                            <div data-bsforge="dropzone" data-multiple="true" id="dzApi"></div>
+                        </div>
+                        <div class="d-flex flex-wrap gap-2 justify-content-center mt-2">
+                            <button class="btn btn-sm btn-secondary"         onclick="dzReset()">reset()</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="dzDisable()">disable()</button>
+                            <button class="btn btn-sm btn-outline-secondary" onclick="dzEnable()">enable()</button>
+                            <button class="btn btn-sm btn-outline-primary"   onclick="dzGetFiles()">getFiles()</button>
+                        </div>
+                        <div class="event-log" id="dzApiResult">Click a button above.</div>
+                    </div>
+                </div>
+
+                <h6 class="fw-semibold mb-2">Usage</h6>
+                <pre class="code-block mb-4"><span class="comment">&lt;!-- Basic --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"dropzone"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- Images only, max 2 MB, up to 3 files --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"dropzone"</span>
+     <span class="attr">data-accept</span>=<span class="str">".jpg,.png,.webp"</span>
+     <span class="attr">data-max-size</span>=<span class="str">"2MB"</span>
+     <span class="attr">data-multiple</span>=<span class="str">"true"</span>
+     <span class="attr">data-max-files</span>=<span class="str">"3"</span><span class="tag">&gt;&lt;/div&gt;</span>
+
+<span class="comment">&lt;!-- onchange callback --&gt;</span>
+<span class="tag">&lt;div</span> <span class="attr">data-bsforge</span>=<span class="str">"dropzone"</span>
+     <span class="attr">data-onchange</span>=<span class="str">"handleFiles"</span><span class="tag">&gt;&lt;/div&gt;</span>
+<span class="tag">&lt;script&gt;</span>
+  <span class="kw">function</span> <span class="fn">handleFiles</span>(files) {
+    console.<span class="fn">log</span>(files); <span class="comment">// Array of File objects</span>
+  }
+<span class="tag">&lt;/script&gt;</span></pre>
+
+                <h6 class="fw-semibold mb-2">JavaScript API</h6>
+                <pre class="code-block mb-4"><span class="kw">const</span> dz = document.<span class="fn">querySelector</span>(<span class="str">'.bsforge-dropzone'</span>)._bsforge;
+
+dz.<span class="fn">getFiles</span>();   <span class="comment">// → Array of File objects</span>
+dz.<span class="fn">reset</span>();      <span class="comment">// clear all files</span>
+dz.<span class="fn">disable</span>();    <span class="comment">// disable the dropzone</span>
+dz.<span class="fn">enable</span>();     <span class="comment">// enable the dropzone</span></pre>
+
+                <h6 class="fw-semibold mb-3">Attributes</h6>
+                <div class="table-responsive mb-4">
+                    <table class="table table-sm align-middle attr-table">
+                        <thead><tr><th>Attribute</th><th>Values</th><th>Default</th><th>Description</th></tr></thead>
+                        <tbody>
+                            <tr><td><code>data-accept</code></td>    <td>e.g. <code>.pdf,.jpg</code></td> <td>all</td>           <td>Allowed file types</td></tr>
+                            <tr><td><code>data-max-size</code></td>  <td>e.g. <code>10MB</code></td>      <td>unlimited</td>     <td>Maximum file size</td></tr>
+                            <tr><td><code>data-multiple</code></td>  <td><code>true</code></td>           <td>—</td>             <td>Allow multiple files</td></tr>
+                            <tr><td><code>data-max-files</code></td> <td>number</td>                      <td>unlimited</td>     <td>Maximum number of files</td></tr>
+                            <tr><td><code>data-name</code></td>      <td>string</td>                      <td><code>files</code></td><td>Input name for form submit</td></tr>
+                            <tr><td><code>data-label</code></td>     <td>string</td>                      <td>Drop files here…</td><td>Custom label text</td></tr>
+                            <tr><td><code>data-onchange</code></td>  <td>function name</td>               <td>—</td>             <td>Called with file array on change</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
         </div>
     </div>
 </div>
@@ -537,7 +468,7 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
     <div class="container d-flex justify-content-between align-items-center flex-wrap gap-2">
         <span class="fw-bold"><span class="text-primary">BS</span>Forge</span>
         <span class="text-secondary small">MIT License</span>
-        <a href="https://github.com/YOUR_USERNAME/BSForge" class="text-secondary small">GitHub →</a>
+        <a href="https://github.com/mujmobil92/BSForge" class="text-secondary small">GitHub →</a>
     </div>
 </footer>
 
@@ -558,6 +489,7 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
         const separatorChar = el.dataset.separatorChar || '–';
         const placeholder   = el.dataset.placeholder || '';
         const onComplete    = el.dataset.oncomplete || null;
+        const onChange      = el.dataset.onchange || null;
         const mask          = el.dataset.mask === 'true';
         const readonly      = el.dataset.readonly === 'true';
         const disabled      = el.dataset.disabled === 'true';
@@ -566,41 +498,33 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
         const secureClear   = el.dataset.secureClear ? parseInt(el.dataset.secureClear) * 1000 : null;
         const customPattern = el.dataset.pattern || null;
         const inputMode     = type === 'numeric' ? 'numeric' : 'text';
-
-        let timeoutHandle = null;
+        let timeoutHandle   = null;
 
         const wrapper = document.createElement('div');
         wrapper.className = `bsforge-otp bsforge-otp--${size} bsforge-otp--gap-${gap} bsforge-otp--${variant} d-flex align-items-center`;
         if (el.id)    wrapper.id = el.id;
         if (disabled) wrapper.classList.add('bsforge-otp--disabled');
 
-        const hidden  = document.createElement('input');
-        hidden.type   = 'hidden';
-        hidden.name   = name;
+        const hidden = document.createElement('input');
+        hidden.type  = 'hidden'; hidden.name = name;
         if (required) hidden.required = true;
         wrapper.appendChild(hidden);
 
         const inputs = [];
         for (let i = 0; i < length; i++) {
             if (separator && i > 0 && i % separator === 0) {
-                const sep       = document.createElement('span');
-                sep.className   = 'bsforge-otp__separator';
-                sep.textContent = separatorChar;
-                sep.setAttribute('aria-hidden', 'true');
-                wrapper.appendChild(sep);
+                const sep = document.createElement('span');
+                sep.className = 'bsforge-otp__separator'; sep.textContent = separatorChar;
+                sep.setAttribute('aria-hidden', 'true'); wrapper.appendChild(sep);
             }
-            const input           = document.createElement('input');
-            input.type            = mask ? 'password' : 'text';
-            input.maxLength       = 1;
-            input.inputMode       = inputMode;
-            input.className       = 'bsforge-otp__input';
-            input.autocomplete    = 'one-time-code';
-            input.placeholder     = placeholder;
+            const input = document.createElement('input');
+            input.type = mask ? 'password' : 'text'; input.maxLength = 1;
+            input.inputMode = inputMode; input.className = 'bsforge-otp__input';
+            input.autocomplete = 'one-time-code'; input.placeholder = placeholder;
             input.setAttribute('aria-label', `Digit ${i + 1} of ${length}`);
-            if (readonly) { input.readOnly = true;  input.tabIndex = -1; }
+            if (readonly) { input.readOnly = true; input.tabIndex = -1; }
             if (disabled) { input.disabled = true; }
-            inputs.push(input);
-            wrapper.appendChild(input);
+            inputs.push(input); wrapper.appendChild(input);
         }
 
         if (secureClear) setTimeout(() => { api.reset(); api.disable(); }, secureClear);
@@ -609,24 +533,14 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
             if (customPattern) return new RegExp(customPattern).test(c);
             return type === 'numeric' ? /^[0-9]$/.test(c) : /^[A-Za-z0-9]$/.test(c);
         }
-
-        function firstEmptyIndex() {
-            const i = inputs.findIndex(inp => !inp.value);
-            return i === -1 ? length - 1 : i;
-        }
-
-        function fireEvent(name, detail) {
-            wrapper.dispatchEvent(new CustomEvent(name, { bubbles: true, detail }));
-        }
-
-        function clearError() {
-            inputs.forEach(inp => inp.classList.remove('is-invalid', 'is-valid'));
-            wrapper.classList.remove('bsforge-otp--error', 'bsforge-otp--success');
-        }
+        function firstEmptyIndex() { const i = inputs.findIndex(inp => !inp.value); return i === -1 ? length - 1 : i; }
+        function fireEvent(n, d)   { wrapper.dispatchEvent(new CustomEvent(n, { bubbles: true, detail: d })); }
+        function clearError()      { inputs.forEach(inp => inp.classList.remove('is-invalid', 'is-valid')); wrapper.classList.remove('bsforge-otp--error', 'bsforge-otp--success'); }
 
         function updateValue() {
-            hidden.value   = inputs.map(inp => inp.value).join('');
+            hidden.value = inputs.map(inp => inp.value).join('');
             const complete = hidden.value.length === length;
+            if (onChange) { const fn = window[onChange]; if (typeof fn === 'function') fn(hidden.value, complete); }
             fireEvent('bsforge:change', { value: hidden.value, complete });
             if (complete) {
                 wrapper.classList.add('bsforge-otp--pulse');
@@ -639,8 +553,7 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
 
         inputs.forEach((input, index) => {
             input.addEventListener('input', (e) => {
-                if (readonly || disabled) return;
-                clearError();
+                if (readonly || disabled) return; clearError();
                 const val = e.target.value;
                 if (val.length > 1) {
                     const chars = val.split('').filter(isValid);
@@ -652,18 +565,12 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
                 }
                 updateValue();
             });
-
             input.addEventListener('keydown', (e) => {
                 if (readonly || disabled) return;
-                if (e.key === 'Backspace' && !input.value && inputs[index - 1]) {
-                    inputs[index - 1].focus();
-                    inputs[index - 1].value = '';
-                    updateValue();
-                }
+                if (e.key === 'Backspace' && !input.value && inputs[index - 1]) { inputs[index - 1].focus(); inputs[index - 1].value = ''; updateValue(); }
                 if (e.key === 'ArrowLeft'  && inputs[index - 1]) inputs[index - 1].focus();
                 if (e.key === 'ArrowRight' && inputs[index + 1]) inputs[index + 1].focus();
             });
-
             input.addEventListener('focus', () => {
                 if (readonly || disabled) return;
                 const target = firstEmptyIndex();
@@ -673,124 +580,237 @@ el.<span class="fn">addEventListener</span>(<span class="str">'bsforge:reset'</s
         });
 
         wrapper.addEventListener('paste', (e) => {
-            if (readonly || disabled) return;
-            e.preventDefault(); clearError();
+            if (readonly || disabled) return; e.preventDefault(); clearError();
             const text = e.clipboardData.getData('text').split('').filter(isValid);
             text.forEach((c, i) => { if (inputs[i]) inputs[i].value = c; });
-            inputs[Math.min(text.length, length - 1)]?.focus();
-            updateValue();
+            inputs[Math.min(text.length, length - 1)]?.focus(); updateValue();
         });
 
         if (required) {
             const form = el.closest('form');
             if (form) {
-                form.addEventListener('submit', (e) => {
-                    if (hidden.value.length < length) { e.preventDefault(); api.setError(true); }
-                });
+                form.addEventListener('submit', (e) => { if (hidden.value.length < length) { e.preventDefault(); api.setError(true); } });
+                form.addEventListener('reset', () => setTimeout(() => api.reset(), 0));
             }
         }
-
         if (autofocus) setTimeout(() => inputs[0]?.focus(), 50);
 
         const api = {
-            getValue()    { return inputs.map(inp => inp.value).join(''); },
-            setValue(code) {
-                String(code).split('').filter(isValid).forEach((c, i) => { if (inputs[i]) inputs[i].value = c; });
-                updateValue();
-            },
-            reset() {
-                clearTimeout(timeoutHandle);
-                inputs.forEach(inp => inp.value = '');
-                clearError(); hidden.value = '';
-                // Only focus if user is already interacting with this OTP
-                if (wrapper.contains(document.activeElement)) {
-                    inputs[0]?.focus();
-                }
-                fireEvent('bsforge:reset', {});
-            },
-            setError(s) {
-                clearError();
-                if (s === true)  { inputs.forEach(inp => inp.classList.add('is-invalid')); wrapper.classList.add('bsforge-otp--error'); }
-                if (s === false) { inputs.forEach(inp => inp.classList.add('is-valid'));   wrapper.classList.add('bsforge-otp--success'); }
-            },
-            disable() { inputs.forEach(inp => inp.disabled = true);  wrapper.classList.add('bsforge-otp--disabled'); },
-            enable()  { inputs.forEach(inp => inp.disabled = false); wrapper.classList.remove('bsforge-otp--disabled'); },
+            getValue()    { const v = inputs.map(inp => inp.value).join(''); return v.length === length ? v : null; },
+            setValue(code){ String(code).split('').filter(isValid).forEach((c, i) => { if (inputs[i]) inputs[i].value = c; }); updateValue(); },
+            reset()       { clearTimeout(timeoutHandle); inputs.forEach(inp => inp.value = ''); clearError(); hidden.value = ''; if (wrapper.contains(document.activeElement)) inputs[0]?.focus(); fireEvent('bsforge:reset', {}); },
+            setError(s)   { clearError(); if (s === true) { inputs.forEach(inp => inp.classList.add('is-invalid')); wrapper.classList.add('bsforge-otp--error'); } if (s === false) { inputs.forEach(inp => inp.classList.add('is-valid')); wrapper.classList.add('bsforge-otp--success'); } },
+            disable()     { inputs.forEach(inp => inp.disabled = true);  wrapper.classList.add('bsforge-otp--disabled'); },
+            enable()      { inputs.forEach(inp => inp.disabled = false); wrapper.classList.remove('bsforge-otp--disabled'); },
         };
-
-        el.replaceWith(wrapper);
-        wrapper._bsforge = api;
+        el.replaceWith(wrapper); wrapper._bsforge = api;
     }
-
     document.querySelectorAll('[data-bsforge="otp"]').forEach(initOTP);
-
-    /* ── Demo wiring ── */
-    window.addEventListener('load', () => {
-
-        // Prefill readonly
-        document.getElementById('demoReadonly')?._bsforge.setValue('123456');
-
-        // Timeout demo — countdown bar
-        const timeoutEl  = document.getElementById('demoTimeout');
-        const timeoutLog = document.getElementById('timeoutLog');
-        const cWrap      = document.getElementById('countdownWrap');
-        const cBar       = document.getElementById('countdownBar');
-        if (timeoutEl) {
-            timeoutEl.addEventListener('bsforge:complete', () => {
-                timeoutLog.innerHTML = '<span class="text-warning">Auto-clearing in 5 s…</span>';
-                cWrap.style.display = 'block';
-                cBar.style.transition = 'none'; cBar.style.width = '100%';
-                requestAnimationFrame(() => {
-                    requestAnimationFrame(() => {
-                        cBar.style.transition = 'width 5s linear';
-                        cBar.style.width = '0%';
-                    });
-                });
-            });
-            timeoutEl.addEventListener('bsforge:reset', () => {
-                timeoutLog.textContent = 'Cleared! Fill again to restart.';
-                cWrap.style.display = 'none';
-            });
-        }
-
-        // Secure clear countdown
-        const secureLog = document.getElementById('secureLog');
-        const secureEl  = document.getElementById('demoSecure');
-        if (secureEl) {
-            let remaining = 8;
-            const iv = setInterval(() => {
-                remaining--;
-                if (remaining <= 0) { clearInterval(iv); return; }
-                secureLog.textContent = `Clears and disables in ${remaining} s — call enable() to unlock.`;
-            }, 1000);
-            secureEl.addEventListener('bsforge:reset', () => {
-                clearInterval(iv);
-                secureLog.innerHTML = '<span class="text-danger">Secure-cleared and disabled. Call <code>otp.enable()</code> to unlock.</span>';
-            });
-        }
-
-        // DOM event log
-        const eventsEl = document.getElementById('demoEvents');
-        const eventLog = document.getElementById('eventLog');
-        if (eventsEl) {
-            eventsEl.addEventListener('bsforge:change',   e => {
-                eventLog.textContent = `bsforge:change → "${e.detail.value}" (complete: ${e.detail.complete})`;
-            });
-            eventsEl.addEventListener('bsforge:complete', e => {
-                eventLog.innerHTML = `<span class="text-success fw-semibold">bsforge:complete → "${e.detail.value}"</span>`;
-            });
-            eventsEl.addEventListener('bsforge:reset', () => {
-                eventLog.textContent = 'bsforge:reset fired';
-            });
-        }
-    });
 })();
 
-/* ── API demo buttons ── */
-function doError()   { document.getElementById('demoApi')?._bsforge.setError(true);  document.getElementById('apiResult').innerHTML = '<span class="text-danger">setError(true) called</span>'; }
-function doSuccess() { document.getElementById('demoApi')?._bsforge.setError(false); document.getElementById('apiResult').innerHTML = '<span class="text-success">setError(false) called</span>'; }
-function doReset()   { document.getElementById('demoApi')?._bsforge.reset();         document.getElementById('apiResult').textContent = 'reset() called'; }
-function doDisable() { document.getElementById('demoApi')?._bsforge.disable();       document.getElementById('apiResult').textContent = 'disable() called'; }
-function doEnable()  { document.getElementById('demoApi')?._bsforge.enable();        document.getElementById('apiResult').textContent = 'enable() called'; }
+/* ── Dropzone Component ── */
+(function () {
+    'use strict';
+
+    function parseSize(str) {
+        if (!str) return Infinity;
+        const match = String(str).match(/^(\d+(?:\.\d+)?)\s*(KB|MB|GB)?$/i);
+        if (!match) return Infinity;
+        const num = parseFloat(match[1]);
+        const unit = (match[2] || 'B').toUpperCase();
+        return num * ({ B: 1, KB: 1024, MB: 1024 ** 2, GB: 1024 ** 3 }[unit] || 1);
+    }
+
+    function formatSize(bytes) {
+        if (bytes < 1024)      return bytes + ' B';
+        if (bytes < 1024 ** 2) return (bytes / 1024).toFixed(1) + ' KB';
+        if (bytes < 1024 ** 3) return (bytes / 1024 ** 2).toFixed(1) + ' MB';
+        return (bytes / 1024 ** 3).toFixed(1) + ' GB';
+    }
+
+    function fileIcon(type) {
+        if (type.startsWith('image/'))                          return 'bi-file-earmark-image';
+        if (type === 'application/pdf')                         return 'bi-file-earmark-pdf';
+        if (type.includes('word'))                              return 'bi-file-earmark-word';
+        if (type.includes('excel') || type.includes('sheet'))  return 'bi-file-earmark-excel';
+        if (type.includes('zip')   || type.includes('rar'))    return 'bi-file-earmark-zip';
+        if (type.startsWith('video/'))                          return 'bi-file-earmark-play';
+        if (type.startsWith('audio/'))                          return 'bi-file-earmark-music';
+        if (type.startsWith('text/'))                           return 'bi-file-earmark-text';
+        return 'bi-file-earmark';
+    }
+
+    function initDropzone(el) {
+        const accept    = el.dataset.accept   || '';
+        const maxSize   = parseSize(el.dataset.maxSize);
+        const multiple  = el.dataset.multiple === 'true';
+        const maxFiles  = el.dataset.maxFiles ? parseInt(el.dataset.maxFiles) : Infinity;
+        const name      = el.dataset.name     || 'files';
+        const label     = el.dataset.label    || 'Drop files here or click to browse';
+        const onChange  = el.dataset.onchange || null;
+
+        let files    = [];
+        let disabled = false;
+
+        const wrapper = document.createElement('div');
+        wrapper.className = 'bsforge-dropzone';
+        if (el.id) wrapper.id = el.id;
+
+        const acceptLabel = accept ? accept.split(',').map(a => a.trim().replace('.', '').toUpperCase()).join(', ') : 'All file types';
+        const sizeLabel   = maxSize !== Infinity ? `up to ${el.dataset.maxSize}` : '';
+
+        wrapper.innerHTML = `
+            <div class="bsforge-dropzone__zone" tabindex="0" role="button" aria-label="${label}">
+                <i class="bi bi-cloud-upload bsforge-dropzone__icon"></i>
+                <p class="bsforge-dropzone__label mb-1">${label}</p>
+                <p class="bsforge-dropzone__hint text-secondary small mb-0">
+                    ${acceptLabel}${sizeLabel ? ' · ' + sizeLabel : ''}${multiple && maxFiles !== Infinity ? ' · max ' + maxFiles + ' files' : ''}
+                </p>
+            </div>
+            <ul class="bsforge-dropzone__list list-unstyled mb-0"></ul>
+            <input type="file" class="bsforge-dropzone__input visually-hidden"
+                   name="${name}" ${accept ? `accept="${accept}"` : ''} ${multiple ? 'multiple' : ''}>
+        `;
+
+        const zone  = wrapper.querySelector('.bsforge-dropzone__zone');
+        const list  = wrapper.querySelector('.bsforge-dropzone__list');
+        const input = wrapper.querySelector('.bsforge-dropzone__input');
+
+        function fireEvent(n, d) { wrapper.dispatchEvent(new CustomEvent(n, { bubbles: true, detail: d })); }
+
+        function showError(message) {
+            fireEvent('bsforge:error', { message });
+            zone.classList.add('bsforge-dropzone__zone--error');
+            setTimeout(() => zone.classList.remove('bsforge-dropzone__zone--error'), 1200);
+        }
+
+        function validate(file) {
+            if (maxSize !== Infinity && file.size > maxSize) { showError(`"${file.name}" is too large (max ${el.dataset.maxSize})`); return false; }
+            if (accept) {
+                const allowed = accept.split(',').map(a => a.trim().toLowerCase());
+                const ext     = '.' + file.name.split('.').pop().toLowerCase();
+                const mime    = file.type.toLowerCase();
+                if (!allowed.some(a => a === ext || mime.startsWith(a.replace('*', '')))) { showError(`"${file.name}" is not an allowed file type`); return false; }
+            }
+            return true;
+        }
+
+        function renderFiles() {
+            list.innerHTML = '';
+            files.forEach((file, index) => {
+                const isImage = file.type.startsWith('image/');
+                const li = document.createElement('li');
+                li.className = 'bsforge-dropzone__item';
+                if (isImage) {
+                    const img = document.createElement('img');
+                    img.className = 'bsforge-dropzone__thumb'; img.src = URL.createObjectURL(file); img.alt = file.name;
+                    li.appendChild(img);
+                } else {
+                    const icon = document.createElement('i');
+                    icon.className = `bi ${fileIcon(file.type)} bsforge-dropzone__file-icon`;
+                    li.appendChild(icon);
+                }
+                const info = document.createElement('div');
+                info.className = 'flex-grow-1 overflow-hidden';
+                info.innerHTML = `<div class="bsforge-dropzone__filename text-truncate small fw-semibold">${file.name}</div><div class="text-secondary" style="font-size:.75rem">${formatSize(file.size)}</div>`;
+                li.appendChild(info);
+                const remove = document.createElement('button');
+                remove.type = 'button'; remove.className = 'btn btn-sm btn-link text-danger p-0 bsforge-dropzone__remove';
+                remove.innerHTML = '<i class="bi bi-x-lg"></i>'; remove.setAttribute('aria-label', `Remove ${file.name}`);
+                remove.addEventListener('click', () => { files.splice(index, 1); renderFiles(); updateInput(); notifyChange(); });
+                li.appendChild(remove);
+                list.appendChild(li);
+            });
+            wrapper.classList.toggle('bsforge-dropzone--has-files', files.length > 0);
+        }
+
+        function updateInput() { const dt = new DataTransfer(); files.forEach(f => dt.items.add(f)); input.files = dt.files; }
+
+        function notifyChange() {
+            if (onChange) { const fn = window[onChange]; if (typeof fn === 'function') fn([...files]); }
+            fireEvent('bsforge:change', { files: [...files] });
+        }
+
+        function addFiles(newFiles) {
+            if (disabled) return;
+            for (const file of newFiles) {
+                if (!validate(file)) continue;
+                if (!multiple) { files = [file]; break; }
+                if (files.length >= maxFiles) { showError(`Maximum ${maxFiles} file${maxFiles > 1 ? 's' : ''} allowed`); break; }
+                if (!files.find(f => f.name === file.name && f.size === file.size)) files.push(file);
+            }
+            renderFiles(); updateInput(); notifyChange();
+        }
+
+        zone.addEventListener('click',   () => { if (!disabled) input.click(); });
+        zone.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') input.click(); });
+        input.addEventListener('change', () => addFiles(Array.from(input.files)));
+        zone.addEventListener('dragover',  (e) => { e.preventDefault(); if (!disabled) zone.classList.add('bsforge-dropzone__zone--over'); });
+        zone.addEventListener('dragleave', ()  => zone.classList.remove('bsforge-dropzone__zone--over'));
+        zone.addEventListener('drop', (e) => { e.preventDefault(); zone.classList.remove('bsforge-dropzone__zone--over'); if (!disabled) addFiles(Array.from(e.dataTransfer.files)); });
+
+        document.addEventListener('paste', (e) => {
+            if (disabled || !wrapper.isConnected) return;
+            const items = Array.from(e.clipboardData.items).filter(i => i.kind === 'file').map(i => i.getAsFile()).filter(Boolean);
+            if (items.length) addFiles(items);
+        });
+
+        const api = {
+            getFiles()  { return [...files]; },
+            reset()     { files = []; renderFiles(); updateInput(); notifyChange(); },
+            disable()   { disabled = true;  wrapper.classList.add('bsforge-dropzone--disabled');    input.disabled = true; },
+            enable()    { disabled = false; wrapper.classList.remove('bsforge-dropzone--disabled'); input.disabled = false; },
+        };
+        el.replaceWith(wrapper); wrapper._bsforge = api;
+    }
+    document.querySelectorAll('[data-bsforge="dropzone"]').forEach(initDropzone);
+})();
+
+/* ── Demo wiring ── */
+window.addEventListener('load', () => {
+    document.getElementById('demoReadonly')?._bsforge.setValue('123456');
+
+    const timeoutEl  = document.getElementById('demoTimeout');
+    const timeoutLog = document.getElementById('timeoutLog');
+    const cWrap      = document.getElementById('countdownWrap');
+    const cBar       = document.getElementById('countdownBar');
+    if (timeoutEl) {
+        timeoutEl.addEventListener('bsforge:complete', () => {
+            timeoutLog.innerHTML = '<span class="text-warning">Auto-clearing in 5 s…</span>';
+            cWrap.style.display = 'block'; cBar.style.transition = 'none'; cBar.style.width = '100%';
+            requestAnimationFrame(() => requestAnimationFrame(() => { cBar.style.transition = 'width 5s linear'; cBar.style.width = '0%'; }));
+        });
+        timeoutEl.addEventListener('bsforge:reset', () => { timeoutLog.textContent = 'Cleared! Fill again to restart.'; cWrap.style.display = 'none'; });
+    }
+
+    const secureLog = document.getElementById('secureLog');
+    const secureEl  = document.getElementById('demoSecure');
+    if (secureEl) {
+        let remaining = 8;
+        const iv = setInterval(() => { remaining--; if (remaining <= 0) { clearInterval(iv); return; } secureLog.textContent = `Clears and disables in ${remaining} s — call enable() to unlock.`; }, 1000);
+        secureEl.addEventListener('bsforge:reset', () => { clearInterval(iv); secureLog.innerHTML = '<span class="text-danger">Secure-cleared and disabled. Call <code>otp.enable()</code> to unlock.</span>'; });
+    }
+
+    const eventsEl = document.getElementById('demoEvents');
+    const eventLog = document.getElementById('eventLog');
+    if (eventsEl) {
+        eventsEl.addEventListener('bsforge:change',   e => { eventLog.textContent = `bsforge:change → "${e.detail.value}" (complete: ${e.detail.complete})`; });
+        eventsEl.addEventListener('bsforge:complete', e => { eventLog.innerHTML = `<span class="text-success fw-semibold">bsforge:complete → "${e.detail.value}"</span>`; });
+        eventsEl.addEventListener('bsforge:reset',    () => { eventLog.textContent = 'bsforge:reset fired'; });
+    }
+});
+
+function handleChange(value, complete) {
+    const log = document.getElementById('onchangeLog');
+    if (!log) return;
+    log.innerHTML = complete ? `<span class="text-success fw-semibold">Complete → "${value}"</span>` : `Typing… "${value}" (${value.length} of 4)`;
+}
+
+function doError()    { document.getElementById('demoApi')?._bsforge.setError(true);  document.getElementById('apiResult').innerHTML = '<span class="text-danger">setError(true) called</span>'; }
+function doSuccess()  { document.getElementById('demoApi')?._bsforge.setError(false); document.getElementById('apiResult').innerHTML = '<span class="text-success">setError(false) called</span>'; }
+function doReset()    { document.getElementById('demoApi')?._bsforge.reset();         document.getElementById('apiResult').textContent = 'reset() called'; }
+function doDisable()  { document.getElementById('demoApi')?._bsforge.disable();       document.getElementById('apiResult').textContent = 'disable() called'; }
+function doEnable()   { document.getElementById('demoApi')?._bsforge.enable();        document.getElementById('apiResult').textContent = 'enable() called'; }
 function doGetValue() {
     const val = document.getElementById('demoApi')?._bsforge.getValue();
     document.getElementById('apiResult').innerHTML = val !== null
@@ -798,17 +818,26 @@ function doGetValue() {
         : '<span class="text-warning">getValue() → null (not complete yet)</span>';
 }
 
-function handleChange(value, complete) {
-    const log = document.getElementById('onchangeLog');
+function dzHandleChange(files) {
+    const log = document.getElementById('dzLog');
     if (!log) return;
-    log.innerHTML = complete
-        ? `<span class="text-success fw-semibold">Complete → "${value}"</span>`
-        : `Typing… "${value}" (${value.length} of 4)`;
+    log.innerHTML = files.length === 0
+        ? 'No files selected yet.'
+        : `${files.length} file${files.length > 1 ? 's' : ''}: ${files.map(f => `<strong>${f.name}</strong>`).join(', ')}`;
 }
 
-/* ── Theme toggle ── */
+function dzReset()    { document.getElementById('dzApi')?._bsforge.reset();    document.getElementById('dzApiResult').textContent = 'reset() called'; }
+function dzDisable()  { document.getElementById('dzApi')?._bsforge.disable();  document.getElementById('dzApiResult').textContent = 'disable() called'; }
+function dzEnable()   { document.getElementById('dzApi')?._bsforge.enable();   document.getElementById('dzApiResult').textContent = 'enable() called'; }
+function dzGetFiles() {
+    const files = document.getElementById('dzApi')?._bsforge.getFiles() || [];
+    document.getElementById('dzApiResult').innerHTML = files.length
+        ? `getFiles() → [${files.map(f => `<strong>${f.name}</strong>`).join(', ')}]`
+        : 'getFiles() → [] (no files)';
+}
+
 function toggleTheme() {
-    const html   = document.documentElement;
+    const html = document.documentElement;
     const isDark = html.getAttribute('data-bs-theme') === 'dark';
     html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
     document.getElementById('themeBtn').textContent = isDark ? '🌙' : '☀️';
