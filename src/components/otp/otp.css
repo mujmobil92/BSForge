@@ -1,0 +1,131 @@
+/*!
+ * BSForge — OTP Input CSS v0.4.0
+ * Uses Bootstrap CSS variables — works with any theme automatically
+ */
+
+/* ── Base ── */
+.bsforge-otp {
+    display:     inline-flex;
+    align-items: center;
+}
+
+/* ── Gap ── */
+.bsforge-otp--gap-sm { gap: 0.35rem; }
+.bsforge-otp--gap-md { gap: 0.5rem;  }
+.bsforge-otp--gap-lg { gap: 0.85rem; }
+
+/* ── Sizes ── */
+.bsforge-otp--sm .bsforge-otp__input { width: 2.25rem; height: 2.75rem; font-size: 1rem;   }
+.bsforge-otp--md .bsforge-otp__input { width: 3rem;    height: 3.5rem;  font-size: 1.5rem; }
+.bsforge-otp--lg .bsforge-otp__input { width: 3.75rem; height: 4.25rem; font-size: 2rem;   }
+
+/* ── Base input ── */
+.bsforge-otp__input {
+    padding:          0;
+    text-align:       center;
+    font-weight:      600;
+    color:            var(--bs-body-color);
+    background-color: var(--bs-body-bg);
+    border:           1px solid var(--bs-border-color);
+    border-radius:    var(--bs-border-radius);
+    transition:       border-color .15s ease-in-out,
+                      box-shadow   .15s ease-in-out,
+                      background   .15s ease-in-out;
+}
+
+/* ── Variant: outlined (default) ── */
+.bsforge-otp--outlined .bsforge-otp__input:focus {
+    border-color: var(--bs-primary);
+    box-shadow:   0 0 0 0.25rem rgba(var(--bs-primary-rgb), .25);
+    outline:      0;
+}
+.bsforge-otp--outlined .bsforge-otp__input:not(:placeholder-shown) {
+    border-color:     var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), .05);
+}
+
+/* ── Variant: filled ── */
+.bsforge-otp--filled .bsforge-otp__input {
+    border-color:     transparent;
+    background-color: var(--bs-secondary-bg);
+    border-radius:    var(--bs-border-radius);
+}
+.bsforge-otp--filled .bsforge-otp__input:focus {
+    border-color:     var(--bs-primary);
+    background-color: rgba(var(--bs-primary-rgb), .08);
+    box-shadow:       0 0 0 0.25rem rgba(var(--bs-primary-rgb), .2);
+    outline:          0;
+}
+.bsforge-otp--filled .bsforge-otp__input:not(:placeholder-shown) {
+    background-color: rgba(var(--bs-primary-rgb), .1);
+    border-color:     var(--bs-primary);
+}
+
+/* ── Variant: underline ── */
+.bsforge-otp--underline .bsforge-otp__input {
+    border:           none;
+    border-bottom:    2px solid var(--bs-border-color);
+    border-radius:    0;
+    background-color: transparent;
+}
+.bsforge-otp--underline .bsforge-otp__input:focus {
+    border-bottom-color: var(--bs-primary);
+    box-shadow:          none;
+    outline:             0;
+}
+.bsforge-otp--underline .bsforge-otp__input:not(:placeholder-shown) {
+    border-bottom-color: var(--bs-primary);
+}
+
+/* ── Error state ── */
+.bsforge-otp--error .bsforge-otp__input.is-invalid {
+    border-color:     var(--bs-danger) !important;
+    background-color: rgba(var(--bs-danger-rgb), .05);
+    animation:        bsforge-shake 0.4s ease;
+}
+.bsforge-otp--error .bsforge-otp__input.is-invalid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-danger-rgb), .25);
+}
+
+/* ── Success state ── */
+.bsforge-otp--success .bsforge-otp__input.is-valid {
+    border-color:     var(--bs-success) !important;
+    background-color: rgba(var(--bs-success-rgb), .05);
+}
+.bsforge-otp--success .bsforge-otp__input.is-valid:focus {
+    box-shadow: 0 0 0 0.25rem rgba(var(--bs-success-rgb), .25);
+}
+
+/* ── Disabled ── */
+.bsforge-otp--disabled .bsforge-otp__input {
+    opacity:          .55;
+    cursor:           not-allowed;
+    background-color: var(--bs-secondary-bg);
+}
+
+/* ── Separator ── */
+.bsforge-otp__separator {
+    font-size:   1.25rem;
+    font-weight: 300;
+    user-select: none;
+    padding:     0 .1rem;
+    color:       var(--bs-secondary-color);
+}
+
+/* ── Animations ── */
+@keyframes bsforge-pulse {
+    0%   { transform: scale(1);    }
+    50%  { transform: scale(1.06); }
+    100% { transform: scale(1);    }
+}
+.bsforge-otp--pulse .bsforge-otp__input {
+    animation: bsforge-pulse 0.35s ease;
+}
+
+@keyframes bsforge-shake {
+    0%, 100% { transform: translateX(0);   }
+    20%      { transform: translateX(-4px); }
+    40%      { transform: translateX(4px);  }
+    60%      { transform: translateX(-4px); }
+    80%      { transform: translateX(2px);  }
+}
