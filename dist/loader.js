@@ -8,7 +8,7 @@
 
     // --- Configuration ---
     const VERSION = '0.1.0';
-    const BASE_URL = 'https://cdn.jsdelivr.net/gh/mujmobil92/BSForge@latest/dist/components';
+    const BASE_URL = 'https://cdn.jsdelivr.net/gh/mujmobil92/BSForge@main/dist/components';
 
     // Whitelist of allowed components — security
     const REGISTERED = ['otp', 'skeleton', 'dropzone', 'datepicker'];
